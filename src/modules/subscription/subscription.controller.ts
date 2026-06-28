@@ -1,4 +1,13 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
+import { SubscriptionService } from './subscription.service';
+import { SubscribeDto } from './dto/subscribe.dto';
 
-@Controller('subscription')
-export class SubscriptionController {}
+@Controller('subscribe')
+export class SubscriptionController {
+  constructor(private readonly subscriptionService: SubscriptionService) {}
+
+  @Post()
+  subscribe(@Body() dto: SubscribeDto) {
+    return this.subscriptionService.subscribe(dto.email);
+  }
+}

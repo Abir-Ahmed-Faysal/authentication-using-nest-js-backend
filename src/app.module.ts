@@ -8,6 +8,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { SubscriptionModule } from './modules/subscription/subscription.module';
 import { MailModule } from './modules/mail/mail.module';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { MailModule } from './modules/mail/mail.module';
     }),
     PrismaModule,
     AuthModule,
+    UsersModule,
     SubscriptionModule,
     MailModule,
   ],

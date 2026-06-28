@@ -96,6 +96,10 @@ export class AuthService {
       throw new UnauthorizedException('Invalid refresh token');
     }
 
+    if (session.expiresAt < new Date()) {
+      throw new UnauthorizedException('Refresh token has expired');
+    }
+
     const isValid = await bcrypt.compare(dto.refreshToken, session.refreshTokenHash);
     if (!isValid) {
       throw new UnauthorizedException('Invalid refresh token');
